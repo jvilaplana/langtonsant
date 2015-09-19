@@ -6,11 +6,14 @@
   <meta name="author" content="Jordi Vilaplana">
   <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="style/material.min.css">
   <link rel="stylesheet" type="text/css" href="style/langtonsant.css">
   <script src="javascript/jquery-1.11.3.min.js"></script>
   <script src="javascript/jquery-ui.min.js"></script>
   <script src="javascript/bootstrap.min.js"></script>
+  <script src="javascript/material.min.js"></script>
   <script src="javascript/langtonsant.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
   <div class="container">
@@ -33,32 +36,47 @@
             <label for="blockSize">Block size</label>
             <input id="blockSize" type="number" class="form-control" placeholder="Block size" value="10" min="10">
           </div>
-          <button id="initializeCanvas" type="submit" class="btn btn-primary">Initialize Canvas</button>
+          <button id="initializeCanvas" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Initialize Canvas</button>
         </form>
       </div>
     </div>
     <div class="well">
-      <p>
-        <span id="speedDown" class="btn btn-default">-</span>
-        <button id="start" class="btn btn-primary" disabled>Start</button>
-        <span id="speedUp" class="btn btn-default">+</span>
-      </p>
-      <p class="pull-right">Current step: <span id="currentStep">0</span></p>
-      <p class="pull-left">Update time: <span id="currentSpeed">0</span> ms</p>
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--1-col">
+          <div id="runningSpinner" class="mdl-spinner mdl-js-spinner mdl-spinner--single-color"></div>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col">
+          <button id="start" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" disabled>Start</button>
+        </div>
+        <div class="mdl-cell mdl-cell--1-col">
+          <i class="material-icons">remove</i>
+        </div>
+        <div class="mdl-cell mdl-cell--2-col">
+          <input id="speedSlider" class="mdl-slider mdl-js-slider" type="range" min="0" max="10000" value="9000" tabindex="0"/>
+          <div class="mdl-tooltip mdl-tooltip--large" for="speedSlider">
+            Adjust simulation speed (<span id="currentSpeed">0</span> ms)
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--1-col">
+          <i class="material-icons">add</i>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col">
+          <p class="pull-right">Current step: <span id="currentStep">0</span></p>
+        </div>
+      </div>
+      <div id="grid"></div>
     </div>
-    <div id="grid"></div>
-  </div>
-  <nav class="navbar navbar-inverse navbar-fixed-bottom">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li><p class="navbar-text">Developed by <a href="http://jordiv.com">Jordi Vilaplana</a></p></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><p class="navbar-text"><a href="http://en.wikipedia.org/wiki/Langton's_ant">About Langon's ant</a></p></li>
-        <li role="separator" class="divider"></li>
-        <li><p class="navbar-text"><a href="http://github.com/jvilaplana/">Check it on GitHub</a></p></li>
-      </ul>
-    </div>
-  </nav>
-</body>
-</html>
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><p class="navbar-text">Developed by <a href="http://jordiv.com">Jordi Vilaplana</a></p></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><p class="navbar-text"><a href="http://en.wikipedia.org/wiki/Langton's_ant">About Langon's ant</a></p></li>
+          <li role="separator" class="divider"></li>
+          <li><p class="navbar-text"><a href="http://github.com/jvilaplana/">Check it on GitHub</a></p></li>
+        </ul>
+      </div>
+    </nav>
+  </body>
+  </html>

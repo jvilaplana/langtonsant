@@ -179,11 +179,13 @@ $(function() {
     if(!running) {
       running = true;
       simulate();
-      $('#start').html("Stop");
+      $('#start').html("Pause");
+      $('#runningSpinner').addClass('is-active');
     }
     else {
       running = false;
       $('#start').html("Start");
+      $('#runningSpinner').removeClass('is-active');
     }
 
   });
@@ -197,6 +199,11 @@ $(function() {
     speed -= 50;
     if(speed < 0) speed = 0;
     $('#currentSpeed').html(speed);
+  });
+
+  $('#speedSlider').on('input', function() {
+    $('#currentSpeed').html(10000 - $('#speedSlider').val());
+    speed = 10000 - $('#speedSlider').val();
   });
 
   $('#currentSpeed').html(speed);
